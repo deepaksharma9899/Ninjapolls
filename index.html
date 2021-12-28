@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<body>
+
+	<script>
+		async function loginToChrome(driver, username, password) {
+  await driver.get("https://accounts.google.com/signin");
+  await driver.sleep(1000);
+  let email_phone = await driver.findElement(
+    By.xpath("//input[@id='identifierId']")
+  );
+  await email_phone.sendKeys(username);
+  await driver.findElement(By.id("identifierNext")).click();
+  await driver.sleep(1000);
+
+  let passEl = await driver.findElement(By.xpath("//input[@name='password']"));
+  await passEl.sendKeys(password);
+  await driver.findElement(By.id("passwordNext")).click();
+  await driver.sleep(1000);
+}
+	</script>
+</body>
+</html>
